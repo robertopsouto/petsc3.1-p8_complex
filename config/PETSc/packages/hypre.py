@@ -8,6 +8,7 @@ class Configure(PETSc.package.NewPackage):
     self.includes  = ['HYPRE.h']
     self.liblist   = [['libHYPRE.a']]
     self.license   = 'https://computation.llnl.gov/casc/linear_solvers/sls_hypre.html'
+    self.complex   = 1
     return
 
   def setupDependencies(self, framework):
@@ -94,9 +95,6 @@ class Configure(PETSc.package.NewPackage):
         raise RuntimeError('Error running ranlib on HYPRE libraries: '+str(e))
       self.postInstall(output1+err1+output2+err2+output3+err3,'hypre')
     return self.installDir
-
-  def set_complex(self):
-        self.complex = 1 
 
   def consistencyChecks(self):
     PETSc.package.NewPackage.consistencyChecks(self)

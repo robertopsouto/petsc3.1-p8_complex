@@ -441,6 +441,7 @@ class Package(config.base.Configure):
     return
 
   def configure(self):
+    self.complex = 1
     if self.download and not self.download[0] == 'redefine' and self.framework.argDB['download-'+self.downloadname.lower()]:
       self.framework.argDB['with-'+self.package] = 1
     if 'with-'+self.package+'-dir' in self.framework.argDB or 'with-'+self.package+'-include' in self.framework.argDB or 'with-'+self.package+'-lib' in self.framework.argDB:
@@ -448,8 +449,6 @@ class Package(config.base.Configure):
     if hasattr(self, 'usePkgConfig') and 'with-'+self.package+'-pkg-config' in self.framework.argDB:
       self.framework.argDB['with-'+self.package] = 1
       self.usePkgConfig()
-
-    self.set_complex()
 
     self.consistencyChecks()
     if self.framework.argDB['with-'+self.package]:
