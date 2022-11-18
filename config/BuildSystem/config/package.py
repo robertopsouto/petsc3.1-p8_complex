@@ -449,6 +449,8 @@ class Package(config.base.Configure):
       self.framework.argDB['with-'+self.package] = 1
       self.usePkgConfig()
 
+    self.complex()
+
     self.consistencyChecks()
     if self.framework.argDB['with-'+self.package]:
       # If clanguage is c++, test external packages with the c++ compiler
