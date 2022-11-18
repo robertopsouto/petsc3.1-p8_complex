@@ -449,7 +449,7 @@ class Package(config.base.Configure):
       self.framework.argDB['with-'+self.package] = 1
       self.usePkgConfig()
 
-    self.complex()
+    self.set_complex()
 
     self.consistencyChecks()
     if self.framework.argDB['with-'+self.package]:
