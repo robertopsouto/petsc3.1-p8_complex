@@ -95,7 +95,9 @@ class Configure(PETSc.package.NewPackage):
       self.postInstall(output1+err1+output2+err2+output3+err3,'hypre')
     return self.installDir
 
-  self.complex=1
+  def set_complex(self):
+        self.complex = 1 
+
   def consistencyChecks(self):
     PETSc.package.NewPackage.consistencyChecks(self)
     if self.framework.argDB['with-'+self.package]:
